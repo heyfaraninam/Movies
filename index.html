@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Movies ✦</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<div class="mesh"></div>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <a class="brand" href="#" onclick="setView('discover');return false;">
+    <div class="brand-dot"></div>
+    Movies ✦
+  </a>
+  <div class="search-wrap">
+    <span class="search-icon">⌕</span>
+    <input class="search-inp" id="search-inp" type="text" placeholder="Search movies…"/>
+  </div>
+  <div class="topbar-actions">
+    <button class="nav-btn active" id="nav-discover" onclick="setView('discover')">Discover</button>
+    <button class="nav-btn" id="nav-favorites" onclick="setView('favorites')">
+      ❤️ Saved <span class="fav-count" id="fav-count" style="display:none"></span>
+    </button>
+  </div>
+</header>
+
+<!-- FILTERS -->
+<div class="filters-bar">
+  <span class="filter-label">Genre</span>
+  <div class="filter-scroll" id="filter-scroll"></div>
+  <select class="sort-select" id="sort-select">
+    <option value="popularity.desc">Most Popular</option>
+    <option value="vote_average.desc">Top Rated</option>
+    <option value="release_date.desc">Latest</option>
+    <option value="revenue.desc">Box Office</option>
+  </select>
+</div>
+
+<!-- MAIN -->
+<main class="main">
+  <div class="section-hdr">
+    <div class="section-title" id="section-title">Discover</div>
+    <div class="section-count" id="section-count"></div>
+  </div>
+  <div class="movies-grid" id="movies-grid"></div>
+  <div class="loader" id="loader"><div class="spinner"></div>Loading movies…</div>
+  <div class="load-more-wrap">
+    <button class="load-more-btn" id="load-more-btn" onclick="loadMore()">Load More</button>
+  </div>
+</main>
+
+<!-- MOVIE DETAIL MODAL -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal glass">
+
+    <div class="modal-backdrop">
+      <img id="modal-backdrop-img" src="" alt=""/>
+      <div class="modal-backdrop-grad"></div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+
+    <div class="modal-body">
+      <div class="modal-hero">
+        <img class="modal-poster" id="modal-poster" src="" alt=""/>
+        <div class="modal-poster-ph" id="modal-poster-ph" style="display:none">🎬</div>
+        <div class="modal-info">
+          <div class="modal-title" id="modal-title"></div>
+          <div class="modal-meta-row">
+            <div class="modal-rating" id="modal-rating"></div>
+            <div class="modal-year"    id="modal-year"></div>
+            <div class="modal-runtime" id="modal-runtime"></div>
+            <div class="modal-lang"    id="modal-lang"></div>
+          </div>
+          <div class="modal-genres" id="modal-genres"></div>
+          <div class="modal-actions">
+            <button class="modal-btn btn-trailer" id="btn-trailer">▶ Trailer</button>
+            <button class="modal-btn btn-fav"     id="btn-fav-modal">🤍 Save</button>
+          </div>
+        </div>
+      </div>
+
+      <p class="modal-overview" id="modal-overview"></p>
+
+      <div id="cast-section">
+        <div class="modal-section-title">Cast</div>
+        <div class="cast-scroll" id="modal-cast"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
